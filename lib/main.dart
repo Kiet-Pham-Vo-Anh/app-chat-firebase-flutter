@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+import 'pages/auth/login_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -56,7 +58,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      theme: ThemeData(
+        primaryColor: Constants().primaryColor,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: _isSignedIn ? const HomePage() : const LoginPage(),
     );
   }
 }
